@@ -40,7 +40,8 @@ Mr. Rea’s English Practice Lab is a static GitHub Pages application for direct
 1. Read `PROJECT-STRUCTURE.md` and the relevant current source, schema, configuration, and tests before editing.
 2. For activity changes, edit canonical JSON beneath `sessions/`, not `docs/practice-library.js`.
 3. After session changes, run `python3 scripts/build-library.py` and include the regenerated library with the canonical changes.
-4. Run all relevant checks. The normal baseline is:
+4. Whenever an activity is created, deleted, renamed, or its stable `id` changes, update `ACTIVITY-LINKS.md` from the canonical session files in the same change.
+5. Run all relevant checks. The normal baseline is:
 
    ```sh
    python3 scripts/build-library.py --check
@@ -48,9 +49,9 @@ Mr. Rea’s English Practice Lab is a static GitHub Pages application for direct
    node tests/runtime-smoke-test.js
    ```
 
-5. When behavior or sessions change, verify the affected `?session=ID` links and the neutral and invalid states as appropriate.
-6. Update `PROJECT-STRUCTURE.md` when the repository structure or normal workflow materially changes.
-7. Report exactly which files changed, which checks ran, and whether direct-link behavior remains intact.
+6. When behavior or sessions change, verify the affected `?session=ID` links and the neutral and invalid states as appropriate.
+7. Update `PROJECT-STRUCTURE.md` when the repository structure or normal workflow materially changes.
+8. Report exactly which files changed, which checks ran, and whether direct-link behavior remains intact.
 
 ## Scope discipline
 
