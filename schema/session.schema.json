@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://english-practice-lab.local/schema/session.schema.json",
-  "title": "English Practice Lab Session",
-  "description": "The canonical format for an English Practice Lab activity. Course and category names are open-ended metadata and are not inferred from folder names.",
+  "title": "Mr. Rea’s English Practice Lab Session",
+  "description": "The canonical format for a Mr. Rea’s English Practice Lab activity. Course and category names are open-ended metadata and are not inferred from folder names.",
   "type": "object",
   "required": [
     "id",

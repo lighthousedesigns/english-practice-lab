@@ -1,6 +1,6 @@
-# English Practice Lab project structure
+# Mr. Rea’s English Practice Lab project structure
 
-English Practice Lab is a static, direct-link assignment website. Students do not need an account in the application, and the site does not need a database or application server. Activities are not presented in a browsable homepage library; each assignment opens through its stable `?session=ID` link.
+Mr. Rea’s English Practice Lab is a static, direct-link assignment website. Students do not need an account in the application, and the site does not need a database or application server. Activities are not presented in a browsable homepage library; each assignment opens through its stable `?session=ID` link.
 
 ## `legacy-reference/`
 

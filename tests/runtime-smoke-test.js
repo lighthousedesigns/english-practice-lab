@@ -7,6 +7,11 @@ const root = path.resolve(__dirname, "..");
 const html = fs.readFileSync(path.join(root, "docs", "index.html"), "utf8");
 const elementIds = [...html.matchAll(/\bid="([^"]+)"/g)].map((match) => match[1]);
 
+assert.match(html, /<title>Mr\. Rea’s English Practice Lab<\/title>/);
+assert.match(html, /<h1>Mr\. Rea’s English Practice Lab<\/h1>/);
+assert.match(html, /id="results-heading"[^>]*>Mr\. Rea’s English Practice Lab<\/h2>/);
+assert.match(html, /class="brand-mark"[^>]*>R<\/div>/);
+
 class FakeClassList {
   constructor() {
     this.values = new Set();
