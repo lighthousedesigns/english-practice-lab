@@ -11,7 +11,7 @@
   var resultsForm = appConfig.resultsForm || {};
 
   var screens = {
-    library: document.getElementById("library-screen"),
+    assignment: document.getElementById("assignment-screen"),
     start: document.getElementById("start-screen"),
     practice: document.getElementById("practice-screen"),
     results: document.getElementById("results-screen"),
@@ -19,9 +19,6 @@
   };
 
   var el = {
-    sessionLibrary: document.getElementById("session-library"),
-    emptyLibrary: document.getElementById("empty-library"),
-    backToLibrary: document.getElementById("back-to-library"),
     sessionCategory: document.getElementById("session-category"),
     sessionTitle: document.getElementById("session-title"),
     sessionDescription: document.getElementById("session-description"),
@@ -65,7 +62,6 @@
     submitResults: document.getElementById("submit-results"),
     savePdf: document.getElementById("save-pdf"),
     repeatSession: document.getElementById("repeat-session"),
-    chooseSession: document.getElementById("choose-session"),
     errorHeading: document.getElementById("error-heading")
   };
 
@@ -84,17 +80,15 @@
     }
 
     el.startForm.addEventListener("submit", startSession);
-    el.backToLibrary.addEventListener("click", returnToLibrary);
     el.nextQuestion.addEventListener("click", advanceOrFinish);
     el.endEarly.addEventListener("click", endEarly);
     el.savePdf.addEventListener("click", function () { window.print(); });
     el.repeatSession.addEventListener("click", repeatSession);
-    el.chooseSession.addEventListener("click", chooseAnotherSession);
     document.addEventListener("visibilitychange", checkTimer);
 
     selectedSession = findSession(requestedSessionId);
     if (requestedSessionId && !selectedSession) {
-      showError("No activity uses the session ID “" + requestedSessionId + "”. Check the link or choose an available activity.", "Activity not found");
+      showError("This activity link is not valid. Please check the link or ask your teacher for the correct one.", "Practice activity not found");
       return;
     }
 
@@ -117,7 +111,7 @@
     if (selectedSession) {
       renderStart();
     } else {
-      renderLibrary();
+      showOnly("assignment");
     }
   }
 
@@ -174,84 +168,8 @@
     return [];
   }
 
-  function renderLibrary() {
-    selectedSession = null;
-    showOnly("library");
-    el.sessionLibrary.textContent = "";
-    var listed = library.sessions.filter(function (session) { return session.listed !== false; });
-    el.emptyLibrary.hidden = listed.length > 0;
-    var courses = groupBy(listed, "course");
-    Object.keys(courses).sort().forEach(function (courseName) {
-      var courseSection = document.createElement("section");
-      courseSection.className = "course-section";
-      var courseHeading = document.createElement("h3");
-      courseHeading.textContent = courseName;
-      courseSection.appendChild(courseHeading);
-      var categories = groupBy(courses[courseName], "category");
-      Object.keys(categories).sort().forEach(function (categoryName) {
-        var categorySection = document.createElement("section");
-        categorySection.className = "category-section";
-        var categoryHeading = document.createElement("h4");
-        categoryHeading.textContent = categoryName;
-        var grid = document.createElement("div");
-        grid.className = "session-card-grid";
-        categories[categoryName].sort(function (left, right) { return left.title.localeCompare(right.title); }).forEach(function (session) {
-          grid.appendChild(createSessionCard(session));
-        });
-        categorySection.appendChild(categoryHeading);
-        categorySection.appendChild(grid);
-        courseSection.appendChild(categorySection);
-      });
-      el.sessionLibrary.appendChild(courseSection);
-    });
-  }
-
-  function groupBy(items, property) {
-    return items.reduce(function (groups, item) {
-      var key = String(item[property]);
-      if (!groups[key]) groups[key] = [];
-      groups[key].push(item);
-      return groups;
-    }, Object.create(null));
-  }
-
-  function createSessionCard(session) {
-    var card = document.createElement("article");
-    card.className = "session-card";
-    card.setAttribute("data-category", session.category);
-    var category = document.createElement("p");
-    category.className = "eyebrow";
-    category.textContent = session.category;
-    var title = document.createElement("h4");
-    title.textContent = session.title;
-    var description = document.createElement("p");
-    description.textContent = session.description;
-    var footer = document.createElement("div");
-    footer.className = "card-footer";
-    var details = document.createElement("span");
-    details.textContent = session.durationMinutes + " min · " + session.questions.length + " questions";
-    var button = document.createElement("button");
-    button.className = "button button-primary";
-    button.type = "button";
-    button.textContent = "Start Practice";
-    button.setAttribute("aria-label", "Start " + session.title);
-    button.addEventListener("click", function () {
-      selectedSession = session;
-      setSessionInAddress(session.id);
-      renderStart();
-    });
-    footer.appendChild(details);
-    footer.appendChild(button);
-    card.appendChild(category);
-    card.appendChild(title);
-    card.appendChild(description);
-    card.appendChild(footer);
-    return card;
-  }
-
   function renderStart() {
     showOnly("start");
-    el.backToLibrary.hidden = false;
     el.sessionCategory.textContent = selectedSession.course + " · " + selectedSession.category;
     el.sessionTitle.textContent = selectedSession.title;
     el.sessionDescription.textContent = selectedSession.description;
@@ -259,12 +177,6 @@
     el.sessionDirections.textContent = selectedSession.directions;
     el.startPractice.textContent = "Start " + selectedSession.durationMinutes + "-Minute Practice";
     el.firstName.focus();
-  }
-
-  function returnToLibrary() {
-    clearState(selectedSession.id);
-    removeSessionFromAddress();
-    renderLibrary();
   }
 
   function startSession(event) {
@@ -563,14 +475,6 @@
     renderStart();
   }
 
-  function chooseAnotherSession() {
-    if (!window.confirm("Have you submitted your results or saved them as a PDF? Choosing another session will clear these results from this tab.")) return;
-    clearState(selectedSession.id);
-    state = null;
-    removeSessionFromAddress();
-    renderLibrary();
-  }
-
   function findSession(id) { return library.sessions.find(function (session) { return session.id === id; }) || null; }
   function findQuestion(id) { return selectedSession.questions.find(function (question) { return question.id === id; }) || null; }
   function storageKey(sessionId) { return "englishPracticeLabSession:" + sessionId; }
@@ -593,17 +497,11 @@
     if (state.status === "results" && !state.code) { state.code = makeCode(); saveState(); }
   }
 
-  function setSessionInAddress(id) {
-    try { window.history.replaceState(null, "", window.location.pathname + "?session=" + encodeURIComponent(id)); } catch (error) {}
-  }
-  function removeSessionFromAddress() {
-    try { window.history.replaceState(null, "", window.location.pathname); } catch (error) {}
-  }
   function showOnly(name) { Object.keys(screens).forEach(function (key) { screens[key].hidden = key !== name; }); }
   function showError(message, heading) {
     stopTimer();
     showOnly("error");
-    el.errorHeading.textContent = heading || "Practice library needs attention";
+    el.errorHeading.textContent = heading || "Practice activity unavailable";
     document.getElementById("error-message").textContent = message;
   }
 }());

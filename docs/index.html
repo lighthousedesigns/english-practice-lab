@@ -22,23 +22,11 @@
   </header>
 
   <main id="main-content" class="student-shell">
-    <section id="library-screen" aria-labelledby="library-heading">
-      <div class="library-hero">
-        <div>
-          <p class="eyebrow">Choose a practice session</p>
-          <h2 id="library-heading">Build skill, speed, and confidence.</h2>
-          <p>Choose your assigned session below. Each activity gives immediate feedback and a result you can submit when you finish.</p>
-        </div>
-        <div class="hero-motif" aria-hidden="true">
-          <span>A</span><span>→</span><span>✓</span>
-        </div>
-      </div>
-      <div id="session-library" class="session-library"></div>
-      <p id="empty-library" class="empty-state" hidden>No practice sessions are currently listed. Use the direct link supplied by your teacher.</p>
+    <section id="assignment-screen" class="panel assignment-panel">
+      <p id="assignment-message">Please open the practice activity assigned by your teacher.</p>
     </section>
 
     <section id="start-screen" class="panel start-panel" hidden aria-labelledby="session-title">
-      <button id="back-to-library" class="text-button" type="button">← Back to all sessions</button>
       <div class="session-heading-row">
         <div>
           <p id="session-category" class="category-pill"></p>
@@ -132,14 +120,12 @@
         <a id="submit-results" class="button button-primary" href="#" target="_blank" rel="noopener">Submit Results to Google Form</a>
         <button id="save-pdf" class="button button-secondary" type="button">Save as PDF</button>
         <button id="repeat-session" class="button button-secondary" type="button">Practice This Session Again</button>
-        <button id="choose-session" class="button button-primary" type="button">Choose Another Session</button>
       </div>
     </section>
 
     <section id="error-screen" class="panel error-panel" hidden>
-      <h2 id="error-heading">Practice library needs attention</h2>
+      <h2 id="error-heading">Practice activity unavailable</h2>
       <p id="error-message"></p>
-      <a class="button button-primary" href="./">Browse available activities</a>
     </section>
   </main>
 </body>

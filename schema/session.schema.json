@@ -51,7 +51,7 @@
     },
     "listed": {
       "type": "boolean",
-      "description": "Controls homepage visibility; unlisted sessions still work through direct links."
+      "description": "Retained for format compatibility. The current student site uses direct activity links rather than a browsable listing."
     },
     "submissionInstruction": {
       "type": "string",

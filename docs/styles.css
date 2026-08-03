@@ -55,31 +55,11 @@ button:disabled { cursor: not-allowed; opacity: .45; }
 .student-shell { width: min(100% - 2rem, 1100px); margin: 0 auto; padding: clamp(1.2rem,3vw,2.5rem) 0 3rem; }
 .panel, .editor-card, .publishing-card { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
 
-.library-hero { display: flex; align-items: center; justify-content: space-between; gap: 2rem; padding: clamp(1.4rem,4vw,2.6rem); color: #fff; background: linear-gradient(125deg, var(--navy), #193e5a 66%, var(--teal-dark)); border-radius: 20px; box-shadow: var(--shadow); }
-.library-hero h2 { max-width: 19ch; margin: 0; font: 700 clamp(2rem,4.5vw,3.6rem)/1.05 Georgia,serif; letter-spacing: -.035em; }
-.library-hero p:not(.eyebrow) { max-width: 62ch; margin: .8rem 0 0; color: #d6e1ed; }
-.library-hero .eyebrow { color: #9edbd6; }
-.hero-motif { display: flex; flex: 0 0 auto; gap: .45rem; }
-.hero-motif span { display: grid; width: 58px; height: 58px; place-items: center; border: 1px solid rgba(255,255,255,.55); border-radius: 50%; font: 700 1.4rem Georgia,serif; }
-.hero-motif span:nth-child(2) { transform: translateY(18px); background: rgba(8,127,121,.7); }
-
-.session-library { display: grid; gap: 1.7rem; margin-top: 2rem; }
-.course-section { display: grid; gap: 1rem; }
-.course-section > h3 { display: flex; align-items: center; gap: .7rem; margin: 0; font: 700 1.7rem Georgia,serif; }
-.course-section > h3::after { content: ""; flex: 1; height: 1px; background: var(--line-dark); }
-.category-section { display: grid; gap: .65rem; }
-.category-section h4 { margin: 0; color: var(--teal-dark); font-size: .8rem; font-weight: 850; letter-spacing: .09em; text-transform: uppercase; }
-.session-card-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1rem; }
-.session-card { display: flex; min-height: 205px; flex-direction: column; padding: 1.15rem; background: #fff; border: 1px solid var(--line); border-top: 5px solid var(--teal); border-radius: 13px; box-shadow: 0 8px 24px rgba(23,35,59,.07); }
-.session-card h4 { margin: .45rem 0 .35rem; font: 700 1.25rem/1.15 Georgia,serif; }
-.session-card p { margin: 0 0 1rem; color: var(--muted); font-size: .9rem; }
-.session-card .card-footer { display: flex; align-items: center; justify-content: space-between; gap: .6rem; margin-top: auto; }
-.session-card .card-footer span { color: var(--muted); font-size: .78rem; font-weight: 700; }
-.empty-state { padding: 2rem; text-align: center; color: var(--muted); background: #fff; border: 1px dashed var(--line-dark); border-radius: 12px; }
+.assignment-panel { max-width: 680px; margin: clamp(2rem,8vw,6rem) auto; padding: clamp(1.6rem,4vw,2.5rem); text-align: center; }
+.assignment-panel p { margin: 0; color: var(--muted); font-size: clamp(1.05rem,2.4vw,1.3rem); }
 
 .start-panel { max-width: 850px; margin: 0 auto; padding: clamp(1.3rem,4vw,2.7rem); }
-.text-button { padding: .25rem 0; color: var(--teal-dark); background: none; border: 0; font-weight: 750; }
-.session-heading-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-top: 1.1rem; }
+.session-heading-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
 .session-heading-row h2 { margin: .45rem 0 .4rem; font: 700 clamp(2rem,4vw,3rem)/1.08 Georgia,serif; letter-spacing: -.025em; }
 .lead { max-width: 62ch; margin: 0; color: var(--muted); }
 .category-pill { display: inline-block; margin: 0; padding: .2rem .6rem; color: var(--teal-dark); background: var(--teal-soft); border-radius: 999px; font-size: .75rem; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; }
@@ -229,7 +209,6 @@ code { padding: .08rem .22rem; background: rgba(255,255,255,.75); border-radius:
 .publishing-actions { margin-top: .75rem; }
 
 @media (max-width: 900px) {
-  .session-card-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .teacher-layout { grid-template-columns: 1fr; }
   .session-sidebar { position: static; }
   .session-list { max-height: none; grid-template-columns: repeat(2,minmax(0,1fr)); }
@@ -238,9 +217,8 @@ code { padding: .08rem .22rem; background: rgba(255,255,255,.75); border-radius:
 }
 
 @media (max-width: 700px) {
-  .library-hero, .session-heading-row, .results-footer { align-items: stretch; flex-direction: column; }
-  .hero-motif { display: none; }
-  .session-card-grid, .start-form, .answer-grid, .settings-grid, .choices-grid { grid-template-columns: 1fr; }
+  .session-heading-row, .results-footer { align-items: stretch; flex-direction: column; }
+  .start-form, .answer-grid, .settings-grid, .choices-grid { grid-template-columns: 1fr; }
   .span-2, .prompt-field, .explanation-field, .choices-field { grid-column: auto; }
   .practice-topbar { grid-template-columns: 1fr 1fr; }
   .practice-session-name { grid-column: 1 / -1; grid-row: 1; }
@@ -263,14 +241,13 @@ code { padding: .08rem .22rem; background: rgba(255,255,255,.75); border-radius:
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .button, .session-card, .answer-choice { transition: background-color 120ms ease, border-color 120ms ease, transform 120ms ease; }
-  .session-card:hover { transform: translateY(-2px); }
+  .button, .answer-choice { transition: background-color 120ms ease, border-color 120ms ease; }
 }
 
 @media print {
   @page { margin: .35in; }
   body { min-height: 0; background: #fff; }
-  .site-header, #library-screen, #start-screen, #practice-screen, #error-screen, .results-actions { display: none !important; }
+  .site-header, #assignment-screen, #start-screen, #practice-screen, #error-screen, .results-actions { display: none !important; }
   .student-shell { width: 100%; margin: 0; padding: 0; }
   #results-screen { display: block !important; }
   .results-card { break-inside: avoid; box-shadow: none; }

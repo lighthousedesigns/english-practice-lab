@@ -124,15 +124,27 @@ function submitStart(runtime) {
   runtime.elements["start-form"].listeners.submit({ preventDefault() {} });
 }
 
-for (const sessionId of ["independent-or-dependent", "types-of-sentences"]) {
+const directAssignments = {
+  "independent-or-dependent": "Independent or Dependent?",
+  "types-of-sentences": "Types of Sentences",
+};
+for (const [sessionId, expectedTitle] of Object.entries(directAssignments)) {
   const runtime = boot("?session=" + sessionId);
   assert.equal(runtime.elements["start-screen"].hidden, false, sessionId + " should open its start screen");
-  assert.notEqual(runtime.elements["session-title"].textContent, "");
+  assert.equal(runtime.elements["session-title"].textContent, expectedTitle);
+  assert.equal(runtime.elements["session-category"].textContent, "Freshman English · Grammar");
 }
+
+const noAssignment = boot("");
+assert.equal(noAssignment.elements["assignment-screen"].hidden, false);
+assert.match(html, /Please open the practice activity assigned by your teacher\./);
 
 const invalid = boot("?session=does-not-exist");
 assert.equal(invalid.elements["error-screen"].hidden, false);
-assert.equal(invalid.elements["error-heading"].textContent, "Activity not found");
+assert.equal(invalid.elements["error-heading"].textContent, "Practice activity not found");
+assert.match(invalid.elements["error-message"].textContent, /ask your teacher/);
+
+assert.doesNotMatch(html, /session-library|Back to all sessions|Choose Another Session|Browse available activities/);
 
 const feedback = boot("?session=types-of-sentences");
 submitStart(feedback);
@@ -162,4 +174,4 @@ assert.equal(formUrl.searchParams.get("entry.1086419845"), "Independent or Depen
 assert.equal(formUrl.searchParams.get("entry.1018386785"), "Period 2");
 assert.equal(formUrl.searchParams.get("entry.1542252984"), "0");
 
-console.log("Runtime smoke tests passed for direct links, feedback, recovery, timeout, score, and Form prefilling.");
+console.log("Runtime smoke tests passed for direct assignments, neutral and invalid links, feedback, recovery, timeout, score, and Form prefilling.");
