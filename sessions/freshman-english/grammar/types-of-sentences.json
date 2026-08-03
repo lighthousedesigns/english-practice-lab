@@ -1,0 +1,133 @@
+{
+  "id": "types-of-sentences",
+  "title": "Types of Sentences",
+  "course": "Freshman English",
+  "category": "Grammar",
+  "description": "Identify simple, compound, and complex sentences by analyzing their clauses.",
+  "directions": "For each question, choose whether the sentence is simple, compound, or complex.",
+  "durationMinutes": 10,
+  "listed": false,
+  "submissionInstruction": "Save this result as a PDF and submit it as directed by your teacher.",
+  "questions": [
+    {
+      "id": "tos01",
+      "prompt": "The students packed their notebooks and hurried to the buses.",
+      "choices": ["Simple", "Compound", "Complex"],
+      "correctIndex": 0,
+      "explanation": "This sentence contains one independent clause. “The students” is the subject, and “packed” and “hurried” form a compound predicate.",
+      "reviewTopic": "Simple sentences"
+    },
+    {
+      "id": "tos02",
+      "prompt": "The rain stopped, and the players returned to the field.",
+      "choices": ["Simple", "Compound", "Complex"],
+      "correctIndex": 1,
+      "explanation": "This sentence contains two independent clauses: “The rain stopped” and “the players returned to the field.” They are joined by the coordinating conjunction “and.”",
+      "reviewTopic": "Compound sentences"
+    },
+    {
+      "id": "tos03",
+      "prompt": "Although the rain had stopped, the field remained muddy.",
+      "choices": ["Simple", "Compound", "Complex"],
+      "correctIndex": 2,
+      "explanation": "“Although the rain had stopped” is a dependent clause, and “the field remained muddy” is an independent clause.",
+      "reviewTopic": "Complex sentences"
+    },
+    {
+      "id": "tos04",
+      "prompt": "My brother and I baked cookies after dinner.",
+      "choices": ["Simple", "Compound", "Complex"],
+      "correctIndex": 0,
+      "explanation": "This sentence contains one independent clause. “My brother and I” is a compound subject, but the sentence still has only one complete clause.",
+      "reviewTopic": "Simple sentences"
+    },
+    {
+      "id": "tos05",
+      "prompt": "The librarian closed the windows, but she left the front door open.",
+      "choices": ["Simple", "Compound", "Complex"],
+      "correctIndex": 1,
+      "explanation": "This sentence contains two independent clauses: “The librarian closed the windows” and “she left the front door open.” They are joined by “but.”",
+      "reviewTopic": "Compound sentences"
+    },
+    {
+      "id": "tos06",
+      "prompt": "When the final bell rang, the hallway filled with students.",
+      "choices": ["Simple", "Compound", "Complex"],
+      "correctIndex": 2,
+      "explanation": "“When the final bell rang” is a dependent clause, and “the hallway filled with students” is an independent clause.",
+      "reviewTopic": "Complex sentences"
+    },
+    {
+      "id": "tos07",
+      "prompt": "The old dog slept beside the fireplace all afternoon.",
+      "choices": ["Simple", "Compound", "Complex"],
+      "correctIndex": 0,
+      "explanation": "This sentence contains one subject, “dog,” and one verb, “slept.” It has one independent clause.",
+      "reviewTopic": "Simple sentences"
+    },
+    {
+      "id": "tos08",
+      "prompt": "Maya wanted to finish the book; she stayed up past midnight.",
+      "choices": ["Simple", "Compound", "Complex"],
+      "correctIndex": 1,
+      "explanation": "This sentence contains two independent clauses joined by a semicolon: “Maya wanted to finish the book” and “she stayed up past midnight.”",
+      "reviewTopic": "Compound sentences"
+    },
+    {
+      "id": "tos09",
+      "prompt": "Because the roads were icy, school opened two hours late.",
+      "choices": ["Simple", "Compound", "Complex"],
+      "correctIndex": 2,
+      "explanation": "“Because the roads were icy” is a dependent clause, and “school opened two hours late” is an independent clause.",
+      "reviewTopic": "Complex sentences"
+    },
+    {
+      "id": "tos10",
+      "prompt": "The bright signs and loud music attracted a crowd.",
+      "choices": ["Simple", "Compound", "Complex"],
+      "correctIndex": 0,
+      "explanation": "This sentence contains one independent clause. “The bright signs and loud music” is a compound subject, not two separate clauses.",
+      "reviewTopic": "Simple sentences"
+    },
+    {
+      "id": "tos11",
+      "prompt": "We could walk to the theater, or we could take the bus.",
+      "choices": ["Simple", "Compound", "Complex"],
+      "correctIndex": 1,
+      "explanation": "This sentence contains two independent clauses: “We could walk to the theater” and “we could take the bus.” They are joined by “or.”",
+      "reviewTopic": "Compound sentences"
+    },
+    {
+      "id": "tos12",
+      "prompt": "The class grew quiet as the principal entered the room.",
+      "choices": ["Simple", "Compound", "Complex"],
+      "correctIndex": 2,
+      "explanation": "“The class grew quiet” is an independent clause, and “as the principal entered the room” is a dependent clause.",
+      "reviewTopic": "Complex sentences"
+    },
+    {
+      "id": "tos13",
+      "prompt": "The chef chopped the vegetables, stirred the soup, and checked the oven.",
+      "choices": ["Simple", "Compound", "Complex"],
+      "correctIndex": 0,
+      "explanation": "This sentence contains one independent clause. The subject “chef” performs three actions, creating a compound predicate.",
+      "reviewTopic": "Simple sentences"
+    },
+    {
+      "id": "tos14",
+      "prompt": "The power went out, so everyone used flashlights.",
+      "choices": ["Simple", "Compound", "Complex"],
+      "correctIndex": 1,
+      "explanation": "This sentence contains two independent clauses: “The power went out” and “everyone used flashlights.” They are joined by “so.”",
+      "reviewTopic": "Compound sentences"
+    },
+    {
+      "id": "tos15",
+      "prompt": "I will call you after I finish my homework.",
+      "choices": ["Simple", "Compound", "Complex"],
+      "correctIndex": 2,
+      "explanation": "“I will call you” is an independent clause, and “after I finish my homework” is a dependent clause.",
+      "reviewTopic": "Complex sentences"
+    }
+  ]
+}

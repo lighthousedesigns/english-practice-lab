@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Teacher Editor — Mr. Rea’s English Practice Hub</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="practice-library.js" defer></script>
+  <script src="teacher.js" defer></script>
+</head>
+<body class="teacher-page">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="teacher-header">
+    <div class="brand-mark" aria-hidden="true">R</div>
+    <div class="teacher-brand"><p class="eyebrow">Teacher workspace</p><h1>Mr. Rea’s English Practice Hub</h1><p>Session and Question Editor</p></div>
+    <button id="preview-session" class="button button-light" type="button">Preview Current Session — 60 Seconds</button>
+  </header>
+
+  <main id="main-content" class="teacher-shell">
+    <section class="publish-notice">
+      <span aria-hidden="true">i</span>
+      <p><strong>Drafts are saved only in this browser.</strong> To publish changes, export <code>practice-library.js</code>, replace the old file in your upload folder, and upload that folder to Netlify.</p>
+    </section>
+
+    <div class="teacher-layout">
+      <aside class="session-sidebar" aria-labelledby="sessions-heading">
+        <div class="sidebar-heading"><div><p class="eyebrow">Practice library</p><h2 id="sessions-heading">Sessions</h2></div><span id="session-count">0</span></div>
+        <div id="session-list" class="session-list"></div>
+        <button id="add-session" class="button button-primary button-wide" type="button">+ New Session</button>
+        <button id="import-session" class="button button-secondary button-wide" type="button">Import a Session</button>
+        <input id="import-session-file" type="file" accept="application/json,.json" hidden>
+      </aside>
+
+      <section class="editor-workspace" aria-labelledby="edit-session-heading">
+        <div class="editor-toolbar">
+          <div><p class="eyebrow">Editing</p><h2 id="edit-session-heading" tabindex="-1">Session</h2></div>
+          <div class="toolbar-actions">
+            <button id="duplicate-session" class="button button-secondary" type="button">Duplicate Session</button>
+            <button id="delete-session" class="button button-danger" type="button">Delete Session</button>
+          </div>
+        </div>
+
+        <div id="editor-status" class="editor-status" role="status" aria-live="polite"></div>
+
+        <section class="editor-card" aria-labelledby="settings-heading">
+          <h3 id="settings-heading">Session Settings</h3>
+          <div class="settings-grid">
+            <div class="field-group span-2"><label for="edit-title">Session Title</label><input id="edit-title" type="text" maxlength="120"></div>
+            <div class="field-group"><label for="edit-id">Session ID</label><input id="edit-id" type="text" maxlength="80" spellcheck="false"><small>Used in direct assignment links.</small></div>
+            <div class="field-group"><label for="edit-category">Category</label><select id="edit-category"><option>Vocabulary</option><option>Grammar</option><option>Literature</option></select></div>
+            <div class="field-group"><label for="edit-duration">Minutes</label><input id="edit-duration" type="number" min="1" max="60"></div>
+            <div class="field-group checkbox-field"><input id="edit-listed" type="checkbox"><label for="edit-listed">Show on the student home page</label></div>
+            <div class="field-group span-2"><label for="edit-description">Short Description</label><textarea id="edit-description" rows="2" maxlength="300"></textarea></div>
+            <div class="field-group span-2"><label for="edit-directions">Student Directions</label><textarea id="edit-directions" rows="3" maxlength="1000"></textarea></div>
+            <div class="field-group span-2"><label for="edit-submission">Results Submission Instruction</label><input id="edit-submission" type="text" maxlength="300"></div>
+          </div>
+        </section>
+
+        <section id="validation-panel" class="validation-panel" aria-labelledby="validation-heading">
+          <div><h3 id="validation-heading" tabindex="-1">Validation</h3><strong id="validation-summary"></strong></div>
+          <ul id="validation-errors"></ul>
+        </section>
+
+        <section aria-labelledby="questions-heading">
+          <div class="questions-toolbar">
+            <div><p class="eyebrow">Question bank</p><h3 id="questions-heading">Questions <span id="question-count">0</span></h3></div>
+            <button id="add-question" class="button button-primary" type="button">+ Add Question</button>
+          </div>
+          <div id="question-list" class="question-editor-list"></div>
+        </section>
+
+        <section class="publishing-card" aria-labelledby="publishing-heading">
+          <div><p class="eyebrow">Back up and publish</p><h3 id="publishing-heading">Library Files</h3></div>
+          <div class="publishing-actions">
+            <button id="save-draft" class="button button-secondary" type="button">Save Editing Draft</button>
+            <button id="export-session" class="button button-secondary" type="button">Export Current Session</button>
+            <button id="export-library" class="button button-secondary" type="button">Export Library Backup</button>
+            <button id="export-publishable" class="button button-primary" type="button">Export Publishable practice-library.js</button>
+            <button id="import-library" class="button button-secondary" type="button">Import Library Backup</button>
+            <input id="import-library-file" type="file" accept="application/json,.json" hidden>
+            <button id="reset-library" class="button button-quiet" type="button">Reset to Published Library</button>
+            <button id="clear-draft" class="button button-quiet" type="button">Clear Saved Draft</button>
+          </div>
+        </section>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

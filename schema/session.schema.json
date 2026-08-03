@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://english-practice-lab.local/schema/session.schema.json",
+  "title": "English Practice Lab Session",
+  "description": "The canonical format for an English Practice Lab activity. Course and category names are open-ended metadata and are not inferred from folder names.",
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "course",
+    "category",
+    "description",
+    "directions",
+    "durationMinutes",
+    "listed",
+    "submissionInstruction",
+    "questions"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Stable session identifier used by direct links such as ?session=types-of-sentences."
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "course": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Student-facing course name used to organize the activity library."
+    },
+    "category": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Student-facing category name within the course."
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "directions": {
+      "type": "string",
+      "minLength": 1
+    },
+    "durationMinutes": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 60
+    },
+    "listed": {
+      "type": "boolean",
+      "description": "Controls homepage visibility; unlisted sessions still work through direct links."
+    },
+    "submissionInstruction": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Per-session fallback instruction shown when the site configuration does not provide a global submission instruction."
+    },
+    "questions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/question"
+      }
+    }
+  },
+  "$defs": {
+    "question": {
+      "type": "object",
+      "required": [
+        "id",
+        "prompt",
+        "choices",
+        "correctIndex",
+        "explanation"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Unique within its session."
+        },
+        "prompt": {
+          "type": "string",
+          "minLength": 1
+        },
+        "choices": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 4,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "correctIndex": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3,
+          "description": "Zero-based index into choices. The legacy validator also checks that the index is smaller than the actual number of choices."
+        },
+        "explanation": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Instructional feedback shown immediately after an answer."
+        },
+        "reviewTopic": {
+          "type": "string",
+          "description": "Optional skill label used in the final performance-by-skill summary."
+        }
+      }
+    }
+  }
+}

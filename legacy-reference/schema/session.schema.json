@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://english-practice-lab.local/schema/session.schema.json",
+  "title": "English Practice Session (legacy hub format)",
+  "description": "The validated individual-session format used by Mr. Rea's English Practice Hub. The legacy format has a category field but no separate course field.",
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "category",
+    "description",
+    "directions",
+    "durationMinutes",
+    "listed",
+    "submissionInstruction",
+    "questions"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Stable session identifier used by direct links such as ?session=types-of-sentences."
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "category": {
+      "type": "string",
+      "enum": ["Vocabulary", "Grammar", "Literature"],
+      "description": "The legacy hub's only course/content grouping field."
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "directions": {
+      "type": "string",
+      "minLength": 1
+    },
+    "durationMinutes": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 60
+    },
+    "listed": {
+      "type": "boolean",
+      "description": "Controls homepage visibility; unlisted sessions still work through direct links."
+    },
+    "submissionInstruction": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Legacy per-session results instruction. See MIGRATION-NOTES.md for the runtime override limitation."
+    },
+    "questions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/question"
+      }
+    }
+  },
+  "$defs": {
+    "question": {
+      "type": "object",
+      "required": [
+        "id",
+        "prompt",
+        "choices",
+        "correctIndex",
+        "explanation"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Unique within its session."
+        },
+        "prompt": {
+          "type": "string",
+          "minLength": 1
+        },
+        "choices": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 4,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "correctIndex": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3,
+          "description": "Zero-based index into choices. The legacy validator also checks that the index is smaller than the actual number of choices."
+        },
+        "explanation": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Instructional feedback shown immediately after an answer."
+        },
+        "reviewTopic": {
+          "type": "string",
+          "description": "Optional skill label used in the final performance-by-skill summary."
+        }
+      }
+    }
+  }
+}

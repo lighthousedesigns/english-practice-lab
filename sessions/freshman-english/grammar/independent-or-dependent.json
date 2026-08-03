@@ -1,0 +1,343 @@
+{
+  "id": "independent-or-dependent",
+  "title": "Independent or Dependent?",
+  "course": "Freshman English",
+  "category": "Grammar",
+  "description": "Decide whether each clause expresses a complete thought or depends on another clause.",
+  "directions": "A clause contains a subject and a verb. Decide whether each clause expresses a complete thought by itself or depends on another clause to complete its meaning.",
+  "durationMinutes": 10,
+  "listed": true,
+  "submissionInstruction": "Save this result as a PDF and submit it as directed by your teacher.",
+  "questions": [
+    {
+      "id": "q21",
+      "prompt": "The auditorium doors opened at seven",
+      "choices": [
+        "Independent Clause",
+        "Dependent Clause"
+      ],
+      "correctIndex": 0,
+      "explanation": "“Doors” is the subject and “opened” is the verb. The clause expresses a complete thought, so it is an independent clause.",
+      "reviewTopic": "Recognizing subjects, verbs, and complete thoughts"
+    },
+    {
+      "id": "q22",
+      "prompt": "Our team has practiced the new routine for weeks",
+      "choices": [
+        "Independent Clause",
+        "Dependent Clause"
+      ],
+      "correctIndex": 0,
+      "explanation": "“Team” is the subject and “has practiced” is the verb phrase. The clause expresses a complete thought, so it is an independent clause.",
+      "reviewTopic": "Recognizing subjects, verbs, and complete thoughts"
+    },
+    {
+      "id": "q23",
+      "prompt": "The librarian placed the returned books on a cart",
+      "choices": [
+        "Independent Clause",
+        "Dependent Clause"
+      ],
+      "correctIndex": 0,
+      "explanation": "“Librarian” is the subject and “placed” is the verb. The clause expresses a complete thought, so it is an independent clause.",
+      "reviewTopic": "Recognizing subjects, verbs, and complete thoughts"
+    },
+    {
+      "id": "q24",
+      "prompt": "Several clouds drifted across the moon",
+      "choices": [
+        "Independent Clause",
+        "Dependent Clause"
+      ],
+      "correctIndex": 0,
+      "explanation": "“Clouds” is the subject and “drifted” is the verb. The clause expresses a complete thought, so it is an independent clause.",
+      "reviewTopic": "Recognizing subjects, verbs, and complete thoughts"
+    },
+    {
+      "id": "q25",
+      "prompt": "My cousin will bring dessert to the picnic",
+      "choices": [
+        "Independent Clause",
+        "Dependent Clause"
+      ],
+      "correctIndex": 0,
+      "explanation": "“Cousin” is the subject and “will bring” is the verb phrase. The clause expresses a complete thought, so it is an independent clause.",
+      "reviewTopic": "Recognizing subjects, verbs, and complete thoughts"
+    },
+    {
+      "id": "q26",
+      "prompt": "The old heater made a rattling sound",
+      "choices": [
+        "Independent Clause",
+        "Dependent Clause"
+      ],
+      "correctIndex": 0,
+      "explanation": "“Heater” is the subject and “made” is the verb. The clause expresses a complete thought, so it is an independent clause.",
+      "reviewTopic": "Recognizing subjects, verbs, and complete thoughts"
+    },
+    {
+      "id": "q27",
+      "prompt": "We found the missing key beneath the couch",
+      "choices": [
+        "Independent Clause",
+        "Dependent Clause"
+      ],
+      "correctIndex": 0,
+      "explanation": "“We” is the subject and “found” is the verb. The clause expresses a complete thought, so it is an independent clause.",
+      "reviewTopic": "Recognizing subjects, verbs, and complete thoughts"
+    },
+    {
+      "id": "q28",
+      "prompt": "A bright mural covers the hallway wall",
+      "choices": [
+        "Independent Clause",
+        "Dependent Clause"
+      ],
+      "correctIndex": 0,
+      "explanation": "“Mural” is the subject and “covers” is the verb. The clause expresses a complete thought, so it is an independent clause.",
+      "reviewTopic": "Recognizing subjects, verbs, and complete thoughts"
+    },
+    {
+      "id": "q29",
+      "prompt": "The students had completed the assignment before class",
+      "choices": [
+        "Independent Clause",
+        "Dependent Clause"
+      ],
+      "correctIndex": 0,
+      "explanation": "“Students” is the subject and “had completed” is the verb phrase. The clause expresses a complete thought, so it is an independent clause.",
+      "reviewTopic": "Recognizing subjects, verbs, and complete thoughts"
+    },
+    {
+      "id": "q30",
+      "prompt": "The band continued playing during the rain",
+      "choices": [
+        "Independent Clause",
+        "Dependent Clause"
+      ],
+      "correctIndex": 0,
+      "explanation": "“Band” is the subject and “continued playing” is the verb phrase. The clause expresses a complete thought, so it is an independent clause.",
+      "reviewTopic": "Recognizing subjects, verbs, and complete thoughts"
+    },
+    {
+      "id": "q31",
+      "prompt": "Her phone rang twice during dinner",
+      "choices": [
+        "Independent Clause",
+        "Dependent Clause"
+      ],
+      "correctIndex": 0,
+      "explanation": "“Phone” is the subject and “rang” is the verb. The clause expresses a complete thought, so it is an independent clause.",
+      "reviewTopic": "Recognizing subjects, verbs, and complete thoughts"
+    },
+    {
+      "id": "q32",
+      "prompt": "The final chapter surprised everyone in the room",
+      "choices": [
+        "Independent Clause",
+        "Dependent Clause"
+      ],
+      "correctIndex": 0,
+      "explanation": "“Chapter” is the subject and “surprised” is the verb. The clause expresses a complete thought, so it is an independent clause.",
+      "reviewTopic": "Recognizing subjects, verbs, and complete thoughts"
+    },
+    {
+      "id": "q33",
+      "prompt": "A row of bicycles stood beside the fence",
+      "choices": [
+        "Independent Clause",
+        "Dependent Clause"
+      ],
+      "correctIndex": 0,
+      "explanation": "“Row” is the subject and “stood” is the verb. The clause expresses a complete thought, so it is an independent clause.",
+      "reviewTopic": "Recognizing subjects, verbs, and complete thoughts"
+    },
+    {
+      "id": "q34",
+      "prompt": "The museum closes at five on Sundays",
+      "choices": [
+        "Independent Clause",
+        "Dependent Clause"
+      ],
+      "correctIndex": 0,
+      "explanation": "“Museum” is the subject and “closes” is the verb. The clause expresses a complete thought, so it is an independent clause.",
+      "reviewTopic": "Recognizing subjects, verbs, and complete thoughts"
+    },
+    {
+      "id": "q35",
+      "prompt": "I should have saved a copy of the document",
+      "choices": [
+        "Independent Clause",
+        "Dependent Clause"
+      ],
+      "correctIndex": 0,
+      "explanation": "“I” is the subject and “should have saved” is the verb phrase. The clause expresses a complete thought, so it is an independent clause.",
+      "reviewTopic": "Recognizing subjects, verbs, and complete thoughts"
+    },
+    {
+      "id": "q36",
+      "prompt": "Because the auditorium doors opened at seven",
+      "choices": [
+        "Independent Clause",
+        "Dependent Clause"
+      ],
+      "correctIndex": 1,
+      "explanation": "“Doors” is the subject and “opened” is the verb. The subordinating conjunction “because” introduces a reason but leaves the reader waiting for the result, so this is a dependent clause.",
+      "reviewTopic": "Subordinating conjunctions and incomplete thoughts"
+    },
+    {
+      "id": "q37",
+      "prompt": "Although our team has practiced the new routine for weeks",
+      "choices": [
+        "Independent Clause",
+        "Dependent Clause"
+      ],
+      "correctIndex": 1,
+      "explanation": "“Team” is the subject and “has practiced” is the verb phrase. The subordinating conjunction “although” introduces a contrast but does not complete it, so this is a dependent clause.",
+      "reviewTopic": "Subordinating conjunctions and incomplete thoughts"
+    },
+    {
+      "id": "q38",
+      "prompt": "When the librarian placed the returned books on a cart",
+      "choices": [
+        "Independent Clause",
+        "Dependent Clause"
+      ],
+      "correctIndex": 1,
+      "explanation": "“Librarian” is the subject and “placed” is the verb. The subordinating conjunction “when” leaves the reader waiting to learn what happened at that time, so this is a dependent clause.",
+      "reviewTopic": "Subordinating conjunctions and incomplete thoughts"
+    },
+    {
+      "id": "q39",
+      "prompt": "While several clouds drifted across the moon",
+      "choices": [
+        "Independent Clause",
+        "Dependent Clause"
+      ],
+      "correctIndex": 1,
+      "explanation": "“Clouds” is the subject and “drifted” is the verb. The subordinating conjunction “while” leaves the reader waiting to learn what happened during that time, so this is a dependent clause.",
+      "reviewTopic": "Subordinating conjunctions and incomplete thoughts"
+    },
+    {
+      "id": "q40",
+      "prompt": "If my cousin brings dessert to the picnic",
+      "choices": [
+        "Independent Clause",
+        "Dependent Clause"
+      ],
+      "correctIndex": 1,
+      "explanation": "“Cousin” is the subject and “brings” is the verb. The subordinating conjunction “if” introduces a condition but does not state what will happen, so this is a dependent clause.",
+      "reviewTopic": "Subordinating conjunctions and incomplete thoughts"
+    },
+    {
+      "id": "q41",
+      "prompt": "Since the old heater made a rattling sound",
+      "choices": [
+        "Independent Clause",
+        "Dependent Clause"
+      ],
+      "correctIndex": 1,
+      "explanation": "“Heater” is the subject and “made” is the verb. The subordinating conjunction “since” introduces a reason but leaves the thought unfinished, so this is a dependent clause.",
+      "reviewTopic": "Subordinating conjunctions and incomplete thoughts"
+    },
+    {
+      "id": "q42",
+      "prompt": "After we found the missing key beneath the couch",
+      "choices": [
+        "Independent Clause",
+        "Dependent Clause"
+      ],
+      "correctIndex": 1,
+      "explanation": "“We” is the subject and “found” is the verb. The subordinating conjunction “after” leaves the reader waiting to learn what happened next, so this is a dependent clause.",
+      "reviewTopic": "Subordinating conjunctions and incomplete thoughts"
+    },
+    {
+      "id": "q43",
+      "prompt": "Wherever the hiking trail crosses the stream",
+      "choices": [
+        "Independent Clause",
+        "Dependent Clause"
+      ],
+      "correctIndex": 1,
+      "explanation": "“Trail” is the subject and “crosses” is the verb. The subordinating conjunction “wherever” leaves the reader waiting to learn what happens at that place, so this is a dependent clause.",
+      "reviewTopic": "Subordinating conjunctions and incomplete thoughts"
+    },
+    {
+      "id": "q44",
+      "prompt": "Before the students completed the assignment",
+      "choices": [
+        "Independent Clause",
+        "Dependent Clause"
+      ],
+      "correctIndex": 1,
+      "explanation": "“Students” is the subject and “completed” is the verb. The subordinating conjunction “before” leaves the reader waiting to learn what happened earlier, so this is a dependent clause.",
+      "reviewTopic": "Subordinating conjunctions and incomplete thoughts"
+    },
+    {
+      "id": "q45",
+      "prompt": "Even though the band continued playing during the rain",
+      "choices": [
+        "Independent Clause",
+        "Dependent Clause"
+      ],
+      "correctIndex": 1,
+      "explanation": "“Band” is the subject and “continued playing” is the verb phrase. The subordinating conjunction “even though” introduces a contrast but does not complete the thought, so this is a dependent clause.",
+      "reviewTopic": "Subordinating conjunctions and incomplete thoughts"
+    },
+    {
+      "id": "q46",
+      "prompt": "Whenever her phone rings during dinner",
+      "choices": [
+        "Independent Clause",
+        "Dependent Clause"
+      ],
+      "correctIndex": 1,
+      "explanation": "“Phone” is the subject and “rings” is the verb. The subordinating conjunction “whenever” leaves the reader waiting to learn what happens during those times, so this is a dependent clause.",
+      "reviewTopic": "Subordinating conjunctions and incomplete thoughts"
+    },
+    {
+      "id": "q47",
+      "prompt": "As soon as the final chapter ended",
+      "choices": [
+        "Independent Clause",
+        "Dependent Clause"
+      ],
+      "correctIndex": 1,
+      "explanation": "“Chapter” is the subject and “ended” is the verb. The subordinating conjunction “as soon as” leaves the reader waiting to learn what happened next, so this is a dependent clause.",
+      "reviewTopic": "Subordinating conjunctions and incomplete thoughts"
+    },
+    {
+      "id": "q48",
+      "prompt": "Until a row of bicycles blocked the gate",
+      "choices": [
+        "Independent Clause",
+        "Dependent Clause"
+      ],
+      "correctIndex": 1,
+      "explanation": "“Row” is the subject and “blocked” is the verb. The subordinating conjunction “until” leaves the reader waiting to learn what continued or changed up to that point, so this is a dependent clause.",
+      "reviewTopic": "Subordinating conjunctions and incomplete thoughts"
+    },
+    {
+      "id": "q49",
+      "prompt": "Because the museum closes at five on Sundays",
+      "choices": [
+        "Independent Clause",
+        "Dependent Clause"
+      ],
+      "correctIndex": 1,
+      "explanation": "“Museum” is the subject and “closes” is the verb. The subordinating conjunction “because” introduces a reason but leaves the reader waiting for the result, so this is a dependent clause.",
+      "reviewTopic": "Subordinating conjunctions and incomplete thoughts"
+    },
+    {
+      "id": "q50",
+      "prompt": "Unless I save a copy of the document",
+      "choices": [
+        "Independent Clause",
+        "Dependent Clause"
+      ],
+      "correctIndex": 1,
+      "explanation": "“I” is the subject and “save” is the verb. The subordinating conjunction “unless” introduces a condition but does not state what will happen, so this is a dependent clause.",
+      "reviewTopic": "Subordinating conjunctions and incomplete thoughts"
+    }
+  ]
+}
