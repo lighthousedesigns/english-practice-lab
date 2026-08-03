@@ -1,4 +1,5 @@
 window.ENGLISH_PRACTICE_CONFIG = {
+  productName: "Mr. Rea’s English Practice Lab",
   submissionInstruction: "Select Submit Results, review the information in the Google Form, and click Submit.",
   resultsForm: {
     url: "https://docs.google.com/forms/d/e/1FAIpQLScknuZPKiVto0siaxJHnY7RacZociqH6USG5PKFbqoKQ2kSGg/viewform",

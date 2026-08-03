@@ -5,11 +5,12 @@ const vm = require("node:vm");
 
 const root = path.resolve(__dirname, "..");
 const html = fs.readFileSync(path.join(root, "docs", "index.html"), "utf8");
+const config = fs.readFileSync(path.join(root, "docs", "config.js"), "utf8");
 const elementIds = [...html.matchAll(/\bid="([^"]+)"/g)].map((match) => match[1]);
+const expectedProductName = "Mr. Rea’s English Practice Lab";
 
-assert.match(html, /<title>Mr\. Rea’s English Practice Lab<\/title>/);
-assert.match(html, /<h1>Mr\. Rea’s English Practice Lab<\/h1>/);
-assert.match(html, /id="results-heading"[^>]*>Mr\. Rea’s English Practice Lab<\/h2>/);
+assert.match(config, /productName:\s*"Mr\. Rea’s English Practice Lab"/);
+assert.doesNotMatch(html, /Mr\. Rea’s English Practice Lab/);
 assert.match(html, /class="brand-mark"[^>]*>R<\/div>/);
 
 class FakeClassList {
@@ -83,6 +84,7 @@ function boot(search, options = {}) {
   }
 
   const document = {
+    title: "",
     getElementById(id) { return elements[id]; },
     createElement(tagName) { return new FakeElement(tagName); },
     addEventListener(type, listener) { documentListeners[type] = listener; },
@@ -119,7 +121,7 @@ function boot(search, options = {}) {
     );
   }
 
-  return { clock, elements, intervalCallbacks, storageValues: storage.values };
+  return { clock, document, elements, intervalCallbacks, storageValues: storage.values };
 }
 
 function submitStart(runtime) {
@@ -136,16 +138,21 @@ const directAssignments = {
 for (const [sessionId, expectedTitle] of Object.entries(directAssignments)) {
   const runtime = boot("?session=" + sessionId);
   assert.equal(runtime.elements["start-screen"].hidden, false, sessionId + " should open its start screen");
+  assert.equal(runtime.document.title, expectedProductName, sessionId + " should set the browser title");
+  assert.equal(runtime.elements["product-name"].textContent, expectedProductName, sessionId + " should show the shared header branding");
+  assert.equal(runtime.elements["results-heading"].textContent, expectedProductName, sessionId + " should prepare the shared results branding");
   assert.equal(runtime.elements["session-title"].textContent, expectedTitle);
   assert.equal(runtime.elements["session-category"].textContent, "Freshman English · Grammar");
 }
 
 const noAssignment = boot("");
 assert.equal(noAssignment.elements["assignment-screen"].hidden, false);
+assert.equal(noAssignment.elements["product-name"].textContent, expectedProductName);
 assert.match(html, /Please open the practice activity assigned by your teacher\./);
 
 const invalid = boot("?session=does-not-exist");
 assert.equal(invalid.elements["error-screen"].hidden, false);
+assert.equal(invalid.elements["product-name"].textContent, expectedProductName);
 assert.equal(invalid.elements["error-heading"].textContent, "Practice activity not found");
 assert.match(invalid.elements["error-message"].textContent, /ask your teacher/);
 
@@ -172,6 +179,7 @@ submitStart(expired);
 expired.clock.now += 10 * 60 * 1000 + 1;
 for (const callback of [...expired.intervalCallbacks.values()]) callback();
 assert.equal(expired.elements["results-screen"].hidden, false);
+assert.equal(expired.elements["results-heading"].textContent, expectedProductName);
 assert.equal(expired.elements["result-score"].textContent, "0 / 0");
 const formUrl = new URL(expired.elements["submit-results"].href);
 assert.equal(formUrl.hostname, "docs.google.com");

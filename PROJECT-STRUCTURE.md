@@ -56,7 +56,7 @@ python3 scripts/build-library.py --check
 
 This is the complete GitHub Pages website. GitHub Pages should be configured to publish the `/docs` folder from the repository's main branch. `docs/index.html` can also be opened directly in a browser for local practice. Opening the site without a valid `session` parameter shows a neutral instruction to use the activity link assigned by the teacher; it does not list activities.
 
-`docs/config.js` contains the public Google Form endpoint, entry-field mapping, and default submission instruction. `docs/app.js` contains the student practice behavior, and `docs/styles.css` contains the visual and print styles.
+`docs/config.js` contains the shared product name, public Google Form endpoint, entry-field mapping, and default submission instruction. The product name is applied by `docs/app.js` to every activity and site state; do not add it to individual session files. `docs/app.js` contains the student practice behavior, and `docs/styles.css` contains the visual and print styles.
 
 `docs/practice-library.js` is generated from the canonical files in `sessions/`. Never edit it manually. Always regenerate it with `scripts/build-library.py` and commit it together with the session changes that produced it.
 

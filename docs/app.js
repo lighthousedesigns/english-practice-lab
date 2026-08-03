@@ -19,6 +19,7 @@
   };
 
   var el = {
+    productName: document.getElementById("product-name"),
     sessionCategory: document.getElementById("session-category"),
     sessionTitle: document.getElementById("session-title"),
     sessionDescription: document.getElementById("session-description"),
@@ -44,6 +45,7 @@
     nextQuestion: document.getElementById("next-question"),
     endEarly: document.getElementById("end-early"),
     resultSessionTitle: document.getElementById("result-session-title"),
+    resultsHeading: document.getElementById("results-heading"),
     resultName: document.getElementById("result-name"),
     resultPeriodWrap: document.getElementById("result-period-wrap"),
     resultPeriod: document.getElementById("result-period"),
@@ -68,6 +70,7 @@
   initialize();
 
   function initialize() {
+    applyProductBranding();
     var errors = validateLibrary(library);
     if (errors.length) {
       showError(errors[0]);
@@ -159,6 +162,9 @@
 
   function validateConfig(candidate) {
     var requiredFields = ["lastName", "firstName", "classPeriod", "session", "attempted", "correct", "incorrect", "accuracy", "time", "streak", "code"];
+    if (!candidate || !String(candidate.productName || "").trim()) {
+      return ["The product name is missing from config.js."];
+    }
     if (!candidate || !candidate.resultsForm || !String(candidate.resultsForm.url || "").trim()) {
       return ["The results Form URL is missing from config.js."];
     }
@@ -166,6 +172,13 @@
       return ["One or more results Form fields are missing from config.js."];
     }
     return [];
+  }
+
+  function applyProductBranding() {
+    var productName = String(appConfig.productName || "").trim();
+    document.title = productName;
+    el.productName.textContent = productName;
+    el.resultsHeading.textContent = productName;
   }
 
   function renderStart() {
@@ -388,7 +401,7 @@
     el.submissionInstruction.textContent = appConfig.submissionInstruction || selectedSession.submissionInstruction;
     el.submitResults.href = buildResultsUrl();
     renderSkillResults();
-    document.getElementById("results-heading").focus();
+    el.resultsHeading.focus();
   }
 
   function renderSkillResults() {
