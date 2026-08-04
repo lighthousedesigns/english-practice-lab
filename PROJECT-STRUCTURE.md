@@ -34,7 +34,9 @@ Course and category names are open-ended. Adding a new course or category requir
 
 ## `schema/`
 
-`schema/session.schema.json` is the machine-readable description of a valid session. It documents required session metadata and the current multiple-choice question format. Update the schema deliberately when the data format gains a new capability.
+`schema/session.schema.json` is the machine-readable description of a valid session. It documents required session metadata and the supported per-question formats. Update the schema deliberately when the data format gains a new capability.
+
+`QUESTION-TYPES.md` is the authoring contract for every supported interaction. Consult it before writing a session, use an existing type when possible, and keep it aligned with the schema, generator validation, runtime validation, and result contract.
 
 ## `scripts/build-library.py`
 
@@ -63,7 +65,7 @@ This is the complete GitHub Pages website. GitHub Pages should be configured to 
 ## Repeatable activity workflow
 
 1. Choose or create the appropriate teacher-organization folders beneath `sessions/`. Folder names do not become website metadata automatically.
-2. Copy a valid session JSON file as a starting point. Give a new activity a unique, URL-safe `id`; set its student-facing `course`, `category`, title, description, directions, duration, compatibility `listed` value, submission fallback, and questions. Never reuse another activity's ID. The current direct-link website does not use `listed` to create a homepage.
+2. Consult `QUESTION-TYPES.md`, then copy a valid session JSON file as a starting point. Give a new activity a unique, URL-safe `id`; set its student-facing `course`, `category`, title, description, directions, duration, compatibility `listed` value, submission fallback, and questions. Never reuse another activity's ID. The current direct-link website does not use `listed` to create a homepage.
 3. Run `python3 scripts/build-library.py`. Resolve every reported error. This updates `docs/practice-library.js`.
 4. Run `python3 -m unittest discover -s tests`, `node tests/runtime-smoke-test.js`, and `python3 scripts/build-library.py --check`.
 5. Open `docs/index.html` locally and confirm that it asks for the teacher-assigned activity link rather than listing sessions. Test the new direct link with `?session=SESSION-ID`, confirm the course/category label, complete several questions, confirm feedback and explanations, let the timer expire once, verify the final score and other metrics, refresh to test recovery, check print/PDF layout, and confirm the Google Form opens with all result fields prefilled. Do not submit test data to the live Form unless that test response is intentional.

@@ -37,7 +37,7 @@ Mr. Rea’s English Practice Lab is a static GitHub Pages application for direct
 
 ## Change workflow
 
-1. Read `PROJECT-STRUCTURE.md` and the relevant current source, schema, configuration, and tests before editing.
+1. Read `PROJECT-STRUCTURE.md`, `QUESTION-TYPES.md`, and the relevant current source, schema, configuration, and tests before editing. Use an existing supported question type before inventing new interaction code.
 2. For activity changes, edit canonical JSON beneath `sessions/`, not `docs/practice-library.js`.
 3. After session changes, run `python3 scripts/build-library.py` and include the regenerated library with the canonical changes.
 4. Whenever an activity is created, deleted, renamed, or its stable `id` changes, update `ACTIVITY-LINKS.md` from the canonical session files in the same change.

@@ -72,8 +72,6 @@
       "required": [
         "id",
         "prompt",
-        "choices",
-        "correctIndex",
         "explanation"
       ],
       "properties": {
@@ -85,6 +83,15 @@
         "prompt": {
           "type": "string",
           "minLength": 1
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "multiple-choice",
+            "classification"
+          ],
+          "default": "multiple-choice",
+          "description": "Question interaction. Omit for backward-compatible multiple-choice behavior."
         },
         "choices": {
           "type": "array",
@@ -109,6 +116,91 @@
         "reviewTopic": {
           "type": "string",
           "description": "Optional skill label used in the final performance-by-skill summary."
+        }
+      },
+      "oneOf": [
+        {
+          "title": "Multiple-choice question",
+          "required": [
+            "choices",
+            "correctIndex"
+          ],
+          "properties": {
+            "type": {
+              "const": "multiple-choice"
+            }
+          }
+        },
+        {
+          "title": "Classification question",
+          "required": [
+            "type",
+            "categories",
+            "items"
+          ],
+          "properties": {
+            "type": {
+              "const": "classification"
+            },
+            "categories": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 6,
+              "items": {
+                "$ref": "#/$defs/classificationCategory"
+              }
+            },
+            "items": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 12,
+              "items": {
+                "$ref": "#/$defs/classificationItem"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "classificationCategory": {
+      "type": "object",
+      "required": [
+        "id",
+        "label"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Stable identifier unique within this question."
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "classificationItem": {
+      "type": "object",
+      "required": [
+        "id",
+        "text",
+        "correctCategoryId"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Stable identifier unique within this question."
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "correctCategoryId": {
+          "type": "string",
+          "minLength": 1,
+          "description": "ID of this item's correct category."
         }
       }
     }

@@ -1,0 +1,128 @@
+{
+  "id": "prototype-classification-question-type",
+  "title": "Prototype: Classification Question Type",
+  "course": "Prototype",
+  "category": "Question-Type Test",
+  "description": "A small interaction test for reusable classification questions. This is not a finished classroom assignment.",
+  "directions": "Test each classification by dragging, selecting and clicking, and using the keyboard. Correct any highlighted mistakes after the first check. One multiple-choice question is included to verify that question types can be mixed.",
+  "durationMinutes": 10,
+  "listed": false,
+  "submissionInstruction": "This is a prototype. Do not submit its test results to the live Google Form.",
+  "questions": [
+    {
+      "id": "classification-clauses",
+      "type": "classification",
+      "prompt": "Sort each clause by whether it expresses a complete thought.",
+      "categories": [
+        {
+          "id": "independent",
+          "label": "Independent Clause"
+        },
+        {
+          "id": "dependent",
+          "label": "Dependent Clause"
+        }
+      ],
+      "items": [
+        {
+          "id": "clause-1",
+          "text": "The stage lights flickered twice",
+          "correctCategoryId": "independent"
+        },
+        {
+          "id": "clause-2",
+          "text": "Because the stage lights flickered twice",
+          "correctCategoryId": "dependent"
+        },
+        {
+          "id": "clause-3",
+          "text": "Our class finished the novel yesterday",
+          "correctCategoryId": "independent"
+        },
+        {
+          "id": "clause-4",
+          "text": "Although our class finished the novel yesterday",
+          "correctCategoryId": "dependent"
+        },
+        {
+          "id": "clause-5",
+          "text": "When the final bell rings",
+          "correctCategoryId": "dependent"
+        },
+        {
+          "id": "clause-6",
+          "text": "The buses wait beside the gym",
+          "correctCategoryId": "independent"
+        }
+      ],
+      "explanation": "Independent clauses can stand alone as complete thoughts. Dependent clauses begin with words such as because, although, or when and need an independent clause to complete their meaning.",
+      "reviewTopic": "Independent and dependent clauses"
+    },
+    {
+      "id": "classification-sentences",
+      "type": "classification",
+      "prompt": "Sort each sentence by its clause structure.",
+      "categories": [
+        {
+          "id": "simple",
+          "label": "Simple Sentence"
+        },
+        {
+          "id": "compound",
+          "label": "Compound Sentence"
+        },
+        {
+          "id": "complex",
+          "label": "Complex Sentence"
+        }
+      ],
+      "items": [
+        {
+          "id": "sentence-1",
+          "text": "The audience applauded the final scene.",
+          "correctCategoryId": "simple"
+        },
+        {
+          "id": "sentence-2",
+          "text": "The audience applauded, and the actors bowed.",
+          "correctCategoryId": "compound"
+        },
+        {
+          "id": "sentence-3",
+          "text": "When the final scene ended, the audience applauded.",
+          "correctCategoryId": "complex"
+        },
+        {
+          "id": "sentence-4",
+          "text": "Maya revised her paragraph and checked every citation.",
+          "correctCategoryId": "simple"
+        },
+        {
+          "id": "sentence-5",
+          "text": "Maya revised her paragraph, but she missed one citation.",
+          "correctCategoryId": "compound"
+        },
+        {
+          "id": "sentence-6",
+          "text": "Although Maya revised her paragraph, she missed one citation.",
+          "correctCategoryId": "complex"
+        }
+      ],
+      "explanation": "A simple sentence has one independent clause, a compound sentence has two or more independent clauses, and a complex sentence combines an independent clause with at least one dependent clause.",
+      "reviewTopic": "Simple, compound, and complex sentences"
+    },
+    {
+      "id": "mixed-type-check",
+      "type": "multiple-choice",
+      "prompt": "Although the rain stopped, the field remained muddy.",
+      "choices": [
+        "Simple",
+        "Compound",
+        "Complex"
+      ],
+      "correctIndex": 2,
+      "explanation": "The sentence is complex because it combines the dependent clause “Although the rain stopped” with the independent clause “the field remained muddy.”",
+      "reviewTopic": "Simple, compound, and complex sentences"
+    }
+  ]
+}

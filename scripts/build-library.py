@@ -22,6 +22,7 @@ REQUIRED_TEXT_FIELDS = (
     "submissionInstruction",
 )
 REQUIRED_QUESTION_TEXT_FIELDS = ("id", "prompt", "explanation")
+SUPPORTED_QUESTION_TYPES = ("multiple-choice", "classification")
 
 
 def display_path(path: Path) -> str:
@@ -72,29 +73,96 @@ def validate_session(session: Any, path: Path) -> list[str]:
             else:
                 question_ids[question_id] = index
 
-        choices = question.get("choices")
-        valid_choices = (
-            isinstance(choices, list)
-            and 2 <= len(choices) <= 4
-            and all(isinstance(choice, str) and choice.strip() for choice in choices)
-        )
-        if not valid_choices:
-            errors.append(f"{question_label}: choices must contain two through four non-empty strings.")
-
-        correct_index = question.get("correctIndex")
-        if (
-            isinstance(correct_index, bool)
-            or not isinstance(correct_index, int)
-            or not isinstance(choices, list)
-            or not 0 <= correct_index < len(choices)
-        ):
-            errors.append(f"{question_label}: correctIndex must point to an existing choice.")
+        question_type = question.get("type", "multiple-choice")
+        if question_type not in SUPPORTED_QUESTION_TYPES:
+            errors.append(
+                f"{question_label}: type must be one of {', '.join(SUPPORTED_QUESTION_TYPES)}."
+            )
+        elif question_type == "multiple-choice":
+            validate_multiple_choice(question, question_label, errors)
+        else:
+            validate_classification(question, question_label, errors)
 
         review_topic = question.get("reviewTopic")
         if review_topic is not None and not isinstance(review_topic, str):
             errors.append(f"{question_label}: reviewTopic must be a string when present.")
 
     return errors
+
+
+def validate_multiple_choice(question: dict[str, Any], label: str, errors: list[str]) -> None:
+    """Validate fields used by an explicit or backward-compatible multiple-choice question."""
+    choices = question.get("choices")
+    valid_choices = (
+        isinstance(choices, list)
+        and 2 <= len(choices) <= 4
+        and all(isinstance(choice, str) and choice.strip() for choice in choices)
+    )
+    if not valid_choices:
+        errors.append(f"{label}: choices must contain two through four non-empty strings.")
+
+    correct_index = question.get("correctIndex")
+    if (
+        isinstance(correct_index, bool)
+        or not isinstance(correct_index, int)
+        or not isinstance(choices, list)
+        or not 0 <= correct_index < len(choices)
+    ):
+        errors.append(f"{label}: correctIndex must point to an existing choice.")
+
+
+def validate_classification(question: dict[str, Any], label: str, errors: list[str]) -> None:
+    """Validate classification categories, items, IDs, and answer references."""
+    categories = question.get("categories")
+    valid_category_array = isinstance(categories, list) and 2 <= len(categories) <= 6
+    if not valid_category_array:
+        errors.append(f"{label}: categories must contain two through six category objects.")
+        categories = []
+
+    category_ids: dict[str, int] = {}
+    for index, category in enumerate(categories, start=1):
+        category_label = f"{label}, category {index}"
+        if not isinstance(category, dict):
+            errors.append(f"{category_label}: the category must be an object.")
+            continue
+        category_id = category.get("id")
+        if not isinstance(category_id, str) or not category_id.strip():
+            errors.append(f"{category_label}: id must be a non-empty string.")
+        elif category_id in category_ids:
+            errors.append(f"{category_label}: category ID {category_id!r} is duplicated.")
+        else:
+            category_ids[category_id] = index
+        if not isinstance(category.get("label"), str) or not category["label"].strip():
+            errors.append(f"{category_label}: label must be a non-empty string.")
+
+    items = question.get("items")
+    valid_item_array = isinstance(items, list) and 2 <= len(items) <= 12
+    if not valid_item_array:
+        errors.append(f"{label}: items must contain two through twelve item objects.")
+        items = []
+
+    item_ids: dict[str, int] = {}
+    for index, item in enumerate(items, start=1):
+        item_label = f"{label}, item {index}"
+        if not isinstance(item, dict):
+            errors.append(f"{item_label}: the item must be an object.")
+            continue
+        item_id = item.get("id")
+        if not isinstance(item_id, str) or not item_id.strip():
+            errors.append(f"{item_label}: id must be a non-empty string.")
+        elif item_id in item_ids:
+            errors.append(f"{item_label}: item ID {item_id!r} is duplicated.")
+        else:
+            item_ids[item_id] = index
+        if not isinstance(item.get("text"), str) or not item["text"].strip():
+            errors.append(f"{item_label}: text must be a non-empty string.")
+        correct_category_id = item.get("correctCategoryId")
+        if not isinstance(correct_category_id, str) or not correct_category_id.strip():
+            errors.append(f"{item_label}: correctCategoryId must be a non-empty string.")
+        elif correct_category_id not in category_ids:
+            errors.append(
+                f"{item_label}: correctCategoryId {correct_category_id!r} does not match a category ID."
+            )
 
 
 def load_sessions(directory: Path = SESSIONS_DIRECTORY) -> tuple[list[dict[str, Any]], list[str]]:
